@@ -1,12 +1,6 @@
 import { Body, Injectable, NotFoundException } from '@nestjs/common';
 import { not } from 'rxjs/internal/util/not';
-
-
-export interface Tournament {
-    id: number;
-    nombre: string;
-    cash: string;
-}
+import { Tournament } from 'interfaces/tournament.dto';
 
 @Injectable()
 export class TournamentsService {

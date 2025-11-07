@@ -1,11 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
 import { TournamentsService } from './tournaments.service'
-
-interface Tournament {
-    id: number;
-    nombre: string;
-    cash: string;
-}
+import { Tournament } from 'interfaces/tournament.dto';
 
 @Controller('/tournaments')
 export class TournamentsController {
