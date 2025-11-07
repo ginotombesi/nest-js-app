@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
 import { TournamentsService } from './tournaments.service'
 import { Tournament } from 'interfaces/tournament.dto';
+import { CreateTournament } from 'interfaces/create-tournament.dto';
 
 @Controller('/tournaments')
 export class TournamentsController {
@@ -20,7 +21,7 @@ export class TournamentsController {
     }
 
     @Post()
-    createTournament(@Body() tournament: Tournament) {
+    createTournament(@Body() tournament: CreateTournament) {
         return this.tournamentsService.createTournament(tournament);
     }
 
