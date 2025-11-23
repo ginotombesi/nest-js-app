@@ -1,19 +1,19 @@
 import { Body, Injectable, NotFoundException } from '@nestjs/common';
 import { not } from 'rxjs/internal/util/not';
-import { Tournament } from 'interfaces/tournament.dto';
-import { CreateTournament } from 'interfaces/create-tournament.dto';
+import { TournamentDto } from './dto/tournament.dto';
+import { CreateTournamentDto } from './dto/create-tournament.dto';
 
 @Injectable()
 export class TournamentsService {
 
-    private tournaments: Tournament[] = [
-    { id: 1, nombre: 'Sunday Million', cash: '109' },
-    { id: 2, nombre: 'Hiper',          cash: '109' },
+    private tournaments: TournamentDto[] = [
+    { id: 1, nombre: 'Sunday Million', cash: 109 },
+    { id: 2, nombre: 'Hiper',          cash: 218 },
   ];
 
-  private newTournament: Tournament[] = [];
+  private newTournament: TournamentDto[] = [];
 
-    getTournaments (): Tournament[] {
+    getTournaments (): TournamentDto[] {
         return this.tournaments
     }
 
@@ -27,14 +27,14 @@ export class TournamentsService {
         return tournamentFound;
     }
 
-    createTournament(@Body() tournament: CreateTournament) {
-        this.newTournament.push({
+    createTournament(@Body() tournament: CreateTournamentDto) {
+        this.tournaments.push({
             ...tournament,
             id: this.tournaments.length + 1,
         });
-        console.log(this.newTournament);
         
-        return this.newTournament;
+        
+        return `Se ha creado el torneo ${tournament.nombre}`;
     }
 
     deleteTournament() {

@@ -1,8 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@nestjs/common';
 import { TournamentsService } from './tournaments.service'
-import { Tournament } from 'interfaces/tournament.dto';
-import { CreateTournament } from 'interfaces/create-tournament.dto';
-import { UpdateTournament } from 'interfaces/update-tournament.dto';
+import { TournamentDto } from './dto/tournament.dto';
+import { CreateTournamentDto } from './dto/create-tournament.dto';
 
 @Controller('/tournaments')
 export class TournamentsController {
@@ -11,8 +10,9 @@ export class TournamentsController {
     constructor(private tournamentsService: TournamentsService) {} // esto es para inyectar el servicio
     // un constructor en una clase es una funcion que se ejecuta al momento de crear/instanciar un objeto
     @Get()
-    getAllTournaments(@Query() query: any) { 
+    getAllTournaments(@Query() query: any, @Body() tournaments: TournamentDto ) { // el @Query() es para obtener los query params y el @Body() es para obtener el body
         console.log(query);
+        console.log(tournaments);
         return this.tournamentsService.getTournaments();
     }
 
@@ -22,8 +22,10 @@ export class TournamentsController {
     }
 
     @Post()
-    createTournament(@Body() tournament: CreateTournament) {
+    createTournament(@Body() tournament: CreateTournamentDto) {
+        console.log(tournament);
         return this.tournamentsService.createTournament(tournament);
+
     }
 
     @Delete()
