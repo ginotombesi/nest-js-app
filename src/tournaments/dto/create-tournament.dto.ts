@@ -1,7 +1,18 @@
-import { IsNotEmpty } from "class-validator";
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Min,
+  MinLength,
+} from 'class-validator';
 
 export class CreateTournamentDto {
-    @IsNotEmpty()
-    nombre: string;
-    cash: number;
+  @IsNotEmpty()
+  @MinLength(3)
+  @IsString()
+  nombre: string;
+  @IsNotEmpty()
+  @Min(1)
+  @IsNumber()
+  cash: number;
 }

@@ -1,5 +1,4 @@
 import { Body, Injectable, NotFoundException } from '@nestjs/common';
-import { not } from 'rxjs/internal/util/not';
 import { TournamentDto } from './dto/tournament.dto';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 
