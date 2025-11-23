@@ -8,12 +8,10 @@ import {
   Post,
   Put,
   Query,
-  UsePipes,
 } from '@nestjs/common';
 import { TournamentsService } from './tournaments.service';
 import { TournamentDto } from './dto/tournament.dto';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
-import { ValidationPipe } from '@nestjs/common';
 
 @Controller('/tournaments')
 export class TournamentsController {
@@ -34,7 +32,6 @@ export class TournamentsController {
   }
 
   @Post()
-  @UsePipes(new ValidationPipe())
   createTournament(@Body() tournament: CreateTournamentDto) {
     console.log(tournament);
     return this.tournamentsService.createTournament(tournament);

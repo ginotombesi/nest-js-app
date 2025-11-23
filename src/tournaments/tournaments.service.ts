@@ -1,4 +1,4 @@
-import { Body, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { TournamentDto } from './dto/tournament.dto';
 import { CreateTournamentDto } from './dto/create-tournament.dto';
 
@@ -9,8 +9,6 @@ export class TournamentsService {
     { id: 1, nombre: 'Sunday Million', cash: 109 },
     { id: 2, nombre: 'Hiper',          cash: 218 },
   ];
-
-  private newTournament: TournamentDto[] = [];
 
     getTournaments (): TournamentDto[] {
         return this.tournaments;
