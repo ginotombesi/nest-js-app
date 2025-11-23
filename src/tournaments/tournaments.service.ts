@@ -33,6 +33,7 @@ export class TournamentsService {
             id: this.tournaments.length + 1,
         });
         console.log(this.newTournament);
+        
         return this.newTournament;
     }
 

@@ -2,13 +2,14 @@ import { Body, Controller, Delete, Get, Param, Patch, Post, Put, Query } from '@
 import { TournamentsService } from './tournaments.service'
 import { Tournament } from 'interfaces/tournament.dto';
 import { CreateTournament } from 'interfaces/create-tournament.dto';
+import { UpdateTournament } from 'interfaces/update-tournament.dto';
 
 @Controller('/tournaments')
 export class TournamentsController {
 
-    constructor(private tournamentsService: TournamentsService) {}
-
-
+    // inyeccion de dependencias, construimos una clase que recibe un servicio
+    constructor(private tournamentsService: TournamentsService) {} // esto es para inyectar el servicio
+    // un constructor en una clase es una funcion que se ejecuta al momento de crear/instanciar un objeto
     @Get()
     getAllTournaments(@Query() query: any) { 
         console.log(query);
