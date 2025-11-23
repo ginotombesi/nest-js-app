@@ -11,8 +11,10 @@ export class CreateTournamentDto {
   @MinLength(3)
   @IsString()
   nombre: string;
+
   @IsNotEmpty()
   @Min(1)
   @IsNumber()
   cash: number;
+  
 }

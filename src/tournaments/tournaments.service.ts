@@ -13,7 +13,7 @@ export class TournamentsService {
   private newTournament: TournamentDto[] = [];
 
     getTournaments (): TournamentDto[] {
-        return this.tournaments
+        return this.tournaments;
     }
 
     getTournamentById (id: number) {
@@ -26,7 +26,7 @@ export class TournamentsService {
         return tournamentFound;
     }
 
-    createTournament(@Body() tournament: CreateTournamentDto) {
+    createTournament(tournament: CreateTournamentDto) {
         this.tournaments.push({
             ...tournament,
             id: this.tournaments.length + 1,
