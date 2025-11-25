@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateSalaDto } from './dto/create-sala.dto';
 import { UpdateSalaDto } from './dto/update-sala.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -19,7 +19,12 @@ export class SalasService {
   }
 
   async findOne(id: number) {
-    return await this.salaRepository.findOne({ where: { id } });
+    const sala = await this.salaRepository.findOne({ where: { id } });
+
+    if (!sala) {
+      throw new NotFoundException('Sala con id ' + id + ' no encontrada');
+    }
+    return sala;
   }
 
   async update(id: number, updateSalaDto: UpdateSalaDto) {
